@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReadLater | Personal Reading List</title>
+
+    <meta
+        name="description"
+        content="A personal reading list for saving articles and resources to read later."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">ReadLater</p>
+
+            <h1>Personal Reading List</h1>
+
+            <p class="intro">
+                Save articles, tutorials, and resources you want to
+                come back to later.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Add Reading Item -->
+        <section
+            class="add-section"
+            aria-labelledby="add-title"
+        >
+
+            <h2 id="add-title">Add something to read</h2>
+
+            <form id="readingForm">
+
+                <div class="form-group">
+                    <label for="title">
+                        Article title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Learn JavaScript"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="url">
+                        Article URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="url"
+                        name="url"
+                        placeholder="https://example.com/article"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Add to reading list
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Reading List -->
+        <section
+            class="reading-section"
+            aria-labelledby="reading-title"
+        >
+
+            <div class="section-heading">
+                <div>
+                    <h2 id="reading-title">
+                        Your reading list
+                    </h2>
+
+                    <p id="listDescription">
+                        Your saved articles will appear here.
+                    </p>
+                </div>
+
+                <span
+                    id="itemCount"
+                    class="item-count"
+                    aria-live="polite"
+                >
+                    0 items
+                </span>
+            </div>
+
+
+            <!-- Loading State -->
+
+            <div
+                id="loadingState"
+                class="state-card loading-state"
+                role="status"
+                aria-live="polite"
+                hidden
+            >
+
+                <div class="loader" aria-hidden="true"></div>
+
+                <h3>Loading your reading list...</h3>
+
+                <p>
+                    Please wait while we retrieve your saved articles.
+                </p>
+
+            </div>
+
+
+            <!-- Error State -->
+
+            <div
+                id="errorState"
+                class="state-card error-state"
+                role="alert"
+                hidden
+            >
+
+                <div class="state-icon" aria-hidden="true">
+                    !
+                </div>
+
+                <h3>We couldn't load your reading list.</h3>
+
+                <p>
+                    Something went wrong while loading your saved articles.
+                    Please try again.
+                </p>
+
+                <button
+                    type="button"
+                    id="retryButton"
+                    class="secondary-button"
+                >
+                    Try again
+                </button>
+
+            </div>
+
+
+            <!-- Empty State -->
+
+            <div
+                id="emptyState"
+                class="state-card empty-state"
+                hidden
+            >
+
+                <div class="state-icon" aria-hidden="true">
+                    📚
+                </div>
+
+                <h3>Your reading list is empty</h3>
+
+                <p>
+                    Save articles, tutorials, and resources you want
+                    to read later. Add your first article to get started.
+                </p>
+
+                <button
+                    type="button"
+                    id="emptyAddButton"
+                    class="primary-button"
+                >
+                    Add your first article
+                </button>
+
+            </div>
+
+
+            <!-- Reading Items -->
+
+            <div
+                id="readingList"
+                class="reading-list"
+                aria-live="polite"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                ReadLater — Personal Reading List
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
