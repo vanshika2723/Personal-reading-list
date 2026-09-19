@@ -187,6 +187,7 @@ GitHub Repository:
 
 https://github.com/vanshika2723/Personal-reading-list
 
+**#Contributor**
 Contributor documentation is available in CONTRIBUTING.md.
 
 ## Final Project Scope
