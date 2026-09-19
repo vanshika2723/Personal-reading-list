@@ -123,7 +123,7 @@ function renderReadingList(items) {
     readingList.innerHTML = "";
 
     itemCount.textContent =
-        `${items.length} ${items.length === 1 ? "item" : "items"}`;
+    `${items.length} ${items.length === 1 ? "item saved" : "items saved"}`;
 
     listDescription.textContent =
         items.length === 0
