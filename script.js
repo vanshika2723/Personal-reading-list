@@ -1,3 +1,4 @@
+
 const readingForm = document.getElementById("readingForm");
 const titleInput = document.getElementById("title");
 const urlInput = document.getElementById("url");
@@ -12,6 +13,7 @@ const emptyAddButton = document.getElementById("emptyAddButton");
 
 const itemCount = document.getElementById("itemCount");
 const listDescription = document.getElementById("listDescription");
+const clearAllButton = document.getElementById("clearAllButton");
 
 const STORAGE_KEY = "readLaterItems";
 
@@ -56,6 +58,7 @@ function showLoadingState() {
 
     loadingState.hidden = false;
     readingList.hidden = true;
+    clearAllButton.hidden = true;
 
     itemCount.textContent = "Loading...";
     listDescription.textContent =
@@ -67,6 +70,7 @@ function showErrorState() {
 
     errorState.hidden = false;
     readingList.hidden = true;
+    clearAllButton.hidden = true;
 
     itemCount.textContent = "Unavailable";
     listDescription.textContent =
@@ -78,6 +82,7 @@ function showEmptyState() {
 
     emptyState.hidden = false;
     readingList.hidden = true;
+    clearAllButton.hidden = true;
 
     itemCount.textContent = "0 items";
     listDescription.textContent =
@@ -131,6 +136,9 @@ function renderReadingList(items) {
     }
 
     hideAllStates();
+
+    // Show Clear All button when items exist
+    clearAllButton.hidden = false;
 
     items.forEach((item) => {
 
@@ -310,6 +318,31 @@ function removeItem(id) {
 }
 
 /* =========================
+   Clear All Items
+========================= */
+
+clearAllButton.addEventListener("click", () => {
+
+    const items = getStoredItems();
+
+    if (items.length === 0) {
+        return;
+    }
+
+    const confirmed = window.confirm(
+        "Are you sure you want to remove all saved articles?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    renderReadingList([]);
+});
+
+/* =========================
    Retry
 ========================= */
 
@@ -345,3 +378,4 @@ emptyAddButton.addEventListener("click", () => {
 ========================= */
 
 loadReadingList();
+
