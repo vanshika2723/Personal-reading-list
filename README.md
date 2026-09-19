@@ -1,225 +1,176 @@
 # Personal Reading List
 
-A responsive personal reading list that allows users to save articles and resources they want to read later.
+A focused rebuild of a **read-it-later / reading-list feature** using HTML, CSS, and JavaScript.
 
-## Overview
+The goal of this project is to provide a simple way to save articles or resources for later, while demonstrating persistent data, responsive design, keyboard accessibility, and clear loading, error, and empty states.
 
-This project demonstrates data fetching and clear handling of three different data states:
+## Live Demo
 
-* Loading
-* Error
-* Empty
+https://vanshika2723.github.io/Personal-reading-list/
 
-Users can add reading items, open saved resources, and remove items from their reading list.
+## What I Built
+
+The application allows users to:
+
+* Add an article or resource with a title and URL
+* View saved reading-list items
+* Open saved resources
+* Remove items from the reading list
+* Persist items using browser `localStorage`
+* Use the application with keyboard navigation
+* View clear loading, error, and empty states
+* Use the application on desktop and mobile screens
 
 ## Tech Stack
 
 * HTML5
 * CSS3
 * JavaScript
-* Local Storage
-* Responsive Design
-* Web Accessibility
+* Browser localStorage
+* GitHub Pages
 
-## Features
+## Original Feature Comparison
 
-* Add articles to a personal reading list
-* Remove saved articles
-* Persistent data using `localStorage`
+This project focuses on rebuilding one feature rather than recreating an entire product.
+
+### Implemented
+
+* Save an article/resource to a reading list
+* Display saved items
+* Remove saved items
+* Persistent browser storage
+* Responsive interface
+* Keyboard-accessible controls
 * Loading state
 * Error state
 * Empty state
-* Retry action after an error
-* First-action button for an empty list
-* Responsive mobile layout
-* Keyboard-accessible controls
-* Visible keyboard focus indicators
+* Error recovery action
 
-# Application States
+### Deliberately Not Implemented
 
-The application intentionally provides three demonstrable states so a reviewer can verify the acceptance criteria without changing the source code.
+The original read-it-later experience can include many features beyond the core reading list. I intentionally kept this project focused and did not implement:
 
-## 1. Loading State
+* User accounts and authentication
+* Cloud synchronization across devices
+* Browser extensions
+* Automatic article/content extraction
+* Tags and folders
+* Advanced search
+* Recommendations
+* Social/sharing features
 
-Open the application with:
+These features were intentionally excluded so that the selected reading-list feature could be completed, tested, and documented properly instead of creating a larger unfinished application.
+
+## What My Version Does Better
+
+The application makes its **loading, error, and empty states directly demonstrable** without requiring source-code changes.
+
+Reviewers can use the documented URL parameters to test each state. The error state also provides a clear **Try Again** recovery action, while the empty state provides an **Add your first article** action.
+
+## Application States
+
+### Normal State
+
+Open the main application normally:
+
+```text
+/
+```
+
+Add an article using the form and verify that it appears in the reading list.
+
+### Loading State
 
 ```text
 ?state=loading
 ```
 
-Example:
+The application displays a loading indicator before showing the normal content.
 
-```text
-http://localhost:5500/?state=loading
-```
-
-### What happens
-
-The application displays:
-
-**Loading your reading list...**
-
-The loading state remains visible while the simulated data retrieval is in progress.
-
-After the demonstration delay, the normal reading list is displayed.
-
----
-
-## 2. Error State
-
-Open the application with:
+### Error State
 
 ```text
 ?state=error
 ```
 
-Example:
+The application displays an error message explaining that the reading-list data could not be loaded and provides a **Try Again** action.
 
-```text
-http://localhost:5500/?state=error
-```
-
-### What happens
-
-The application first displays the loading state and then changes to the error state.
-
-The error message explains:
-
-* What failed
-* What the user can do next
-
-The interface displays:
-
-**We couldn't load your reading list.**
-
-and provides a:
-
-**Try again**
-
-button.
-
-Selecting **Try again** returns the application to the normal state.
-
----
-
-## 3. Empty State
-
-Open the application with:
+### Empty State
 
 ```text
 ?state=empty
 ```
 
-Example:
+The application displays an explanation of the reading-list feature and provides an **Add your first article** action.
 
-```text
-http://localhost:5500/?state=empty
+## Keyboard Accessibility
+
+The application can be operated using the keyboard.
+
+* `Tab` — Move between interactive elements
+* `Enter` / `Space` — Activate buttons
+* Visible focus indicators are provided
+* Native HTML buttons are used for actions
+* Status and error messages use appropriate ARIA announcements
+
+## Responsive Design
+
+The layout adapts to different screen sizes.
+
+The interface was designed to work on:
+
+* Desktop
+* Tablet
+* Mobile
+* Narrow mobile screens
+
+The page avoids horizontal scrolling on small screens.
+
+## Data Persistence
+
+Reading-list items are stored using browser `localStorage`.
+
+This means saved items remain available after refreshing the page in the same browser.
+
+## How to Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/vanshika2723/Personal-reading-list.git
 ```
 
-### What happens
+### 2. Open the project
 
-The application displays:
-
-**Your reading list is empty**
-
-The message explains what the reading list is for and provides the first action:
-
-**Add your first article**
-
-Selecting this button moves keyboard focus to the title input so the user can immediately add an article.
-
----
-
-# Normal Reading List
-
-Open the application without a state parameter:
-
-```text
-http://localhost:5500/
+```bash
+cd Personal-reading-list
 ```
 
-Users can:
+### 3. Run the application
 
-1. Enter an article title.
-2. Enter a valid article URL.
-3. Select **Add to reading list**.
-4. Open the saved article.
-5. Select **Remove** to delete an item.
+Open `index.html` using a local development server such as VS Code Live Server.
 
-Reading items are stored in the browser's `localStorage`, so they remain available after refreshing the page.
+The application does not require a backend server or database.
 
-# Accessibility
+## Testing Checklist
 
-The application is designed to be usable with a keyboard.
+A reviewer can verify the project using the following checklist:
 
-## Keyboard Controls
+* [ ] Application loads successfully
+* [ ] User can add a reading-list item
+* [ ] Saved item appears in the list
+* [ ] Item remains after page refresh
+* [ ] User can remove an item
+* [ ] Loading state is visible
+* [ ] Error state is visible
+* [ ] Error state provides recovery
+* [ ] Empty state explains the feature
+* [ ] Empty state provides a first action
+* [ ] Keyboard navigation works
+* [ ] Focus indicators are visible
+* [ ] Mobile layout works without horizontal scrolling
 
-| Key         | Action                                   |
-| ----------- | ---------------------------------------- |
-| Tab         | Move to the next interactive element     |
-| Shift + Tab | Move to the previous interactive element |
-| Enter       | Activate the focused button or link      |
-| Space       | Activate the focused button              |
-
-All interactive controls use native HTML elements such as `<button>`, `<input>`, and `<a>`.
-
-Visible `:focus-visible` styles make the current keyboard focus easy to identify.
-
-## State Communication
-
-The loading state uses:
-
-```html
-role="status"
-aria-live="polite"
-```
-
-The error state uses:
-
-```html
-role="alert"
-```
-
-The item count uses:
-
-```html
-aria-live="polite"
-```
-
-These attributes help communicate dynamic state changes to assistive technologies.
-
-# Responsive Design
-
-The interface is responsive and designed to work on narrow screens.
-
-At mobile widths:
-
-* The form changes from multiple columns to a single column.
-* Reading items stack vertically.
-* Buttons remain accessible and usable.
-* Text wraps instead of creating horizontal overflow.
-
-The layout was specifically tested at **320px** to ensure there is no horizontal scrolling.
-
-# State Design
-
-The three states are intentionally different:
-
-### Loading
-
-The system is still retrieving the reading list.
-
-### Error
-
-The retrieval failed and the user needs an action to recover.
-
-### Empty
-
-The retrieval completed successfully, but there are currently no saved reading items.
-
-Keeping these states visually and textually distinct prevents the interface from incorrectly presenting an unavailable or unmeasured result as an empty list.
-
-# Project Structure
+## Project Structure
 
 ```text
 Personal-Reading-List/
@@ -230,56 +181,14 @@ Personal-Reading-List/
 └── README.md
 ```
 
-# Testing Checklist
+## Repository
 
-The following scenarios can be tested without modifying the source code:
+GitHub Repository:
 
-* [x] Loading state is demonstrable with `?state=loading`
-* [x] Error state is demonstrable with `?state=error`
-* [x] Empty state is demonstrable with `?state=empty`
-* [x] Loading and error states are visually distinct
-* [x] Loading and empty states are visually distinct
-* [x] Error message explains the failure and next action
-* [x] Empty state explains the purpose of the feature
-* [x] Empty state provides the first action
-* [x] Retry action works
-* [x] Articles can be added
-* [x] Articles can be removed
-* [x] Reading list persists after refresh
-* [x] Keyboard navigation works
-* [x] Focus indicators are visible
-* [x] Layout works at 320px without horizontal scrolling
+https://github.com/vanshika2723/Personal-reading-list
 
-# How a Reviewer Can Verify
+## Final Project Scope
 
-A reviewer can verify all acceptance criteria using the following URLs:
+This project intentionally focuses on one complete feature: **saving and managing resources in a personal reading list**.
 
-### Loading
-
-```text
-/?state=loading
-```
-
-### Error
-
-```text
-/?state=error
-```
-
-### Empty
-
-```text
-/?state=empty
-```
-
-### Normal list
-
-```text
-/
-```
-
-No source-code changes are required to demonstrate any of the three states.
-
-# Goal
-
-The goal of this project is to demonstrate clear, accessible handling of asynchronous data states while providing users with useful next actions in every state.
+The scope was kept narrow so that the core experience, accessibility, failure states, responsive behavior, persistence, and documentation could be completed and tested properly.
