@@ -166,6 +166,11 @@ function renderReadingList(items) {
         removeButton.className = "remove-button";
         removeButton.textContent = "Remove";
 
+        removeButton.setAttribute(
+    "aria-label",
+    `Remove ${item.title} from reading list`
+);
+
         removeButton.addEventListener("click", () => {
             removeItem(item.id);
         });
