@@ -187,6 +187,8 @@ GitHub Repository:
 
 https://github.com/vanshika2723/Personal-reading-list
 
+Contributor documentation is available in CONTRIBUTING.md.
+
 ## Final Project Scope
 
 This project intentionally focuses on one complete feature: **saving and managing resources in a personal reading list**.
